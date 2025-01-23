@@ -6,8 +6,12 @@ import yagmail
 app = FastAPI()
 
 # Email account credentials
-SENDER_EMAIL = "anpapershow@gmail.com"
-APP_PASSWORD = "zehm eskq yewr dmog"
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  # Load environment variables from .env
+SENDER_EMAIL = os.getenv("SENDER_EMAIL")
+APP_PASSWORD = os.getenv("APP_PASSWORD")
 
 # Initialize Yagmail
 yag = yagmail.SMTP(SENDER_EMAIL, APP_PASSWORD)
